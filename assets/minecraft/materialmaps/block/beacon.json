@@ -1,0 +1,9 @@
+{
+    "defaultMap": {
+        "spriteMap": [{
+                "sprite": "minecraft:block/beacon",
+                "material": "lumi:beacon_shader"
+            }
+        ]
+    }
+}

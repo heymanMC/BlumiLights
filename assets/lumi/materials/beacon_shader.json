@@ -1,0 +1,7 @@
+{
+    "layers": [
+        {
+            "fragmentSource": "lumi:shaders/material/beacon_shader.frag"
+        }
+    ]
+}
