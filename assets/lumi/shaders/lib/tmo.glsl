@@ -14,6 +14,18 @@ vec3 acesNarkowicz(vec3 x) {
   return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
 }
 
+vec3 uncharted2Tonemap(vec3 x) {
+  float A = 0.15;
+  float B = 0.50;
+  float C = 0.10;
+  float D = 0.20;
+  float E = 0.02;
+  float F = 0.30;
+  float W = 11.2;
+  return ((x * (A * x + C * B) + D * E) / (x * (A * x + B) + D * F)) - E / F;
+}
+
+
 vec3 acesHillModified(vec3 x) {
 	return frx_toneMap(x * 2.);
 }
@@ -26,6 +38,12 @@ vec3 ldr_reinhardJodieTonemap(in vec3 v) {
 
 vec3 ldr_vibrantTonemap(in vec3 hdrColor){
 	return hdrColor / (frx_luminance(hdrColor) + vec3(1.0));
+}
+
+vec3 reinhard2(vec3 x) {
+  const float L_white = 4.0;
+
+  return (x * (1.0 + x / (L_white * L_white))) / (1.0 + x);
 }
 
 vec3 hable_tonemap_partial(vec3 x)

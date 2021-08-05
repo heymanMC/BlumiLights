@@ -1,6 +1,7 @@
 #include lumi:shaders/common/contrast.glsl
 #include lumi:shaders/lib/tmo.glsl
 #include lumi:shaders/lib/util.glsl
+#include lumi:shaders/common/userconfig.glsl
 
 /*******************************************************
  *  lumi:shaders/func/tonemap.glsl
@@ -29,7 +30,29 @@ vec3 ldr_tonemap3noGamma(vec3 a)
 	exposure = getExposure(eyeBrightness);
 #endif
 
+#ifdef FILMIC_ENABLED
+	c = hable_filmic(c * exposure);
+#endif
+
+#ifdef STANDARD_ENABLED
 	c = acesNarkowicz(c * exposure);
+#endif
+
+#ifdef REINHARD_ENABLED
+	c = ldr_reinhardJodieTonemap(c * exposure);
+#endif
+
+#ifdef REINHARD2_ENABLED
+	c = reinhard2(c * exposure);
+#endif
+
+#ifdef VIBRANT_ENABLED
+	c = ldr_vibrantTonemap(c * exposure);
+#endif
+
+#ifdef UNCHARTED2_ENABLED
+	c = uncharted2Tonemap(c * exposure);
+#endif
 
 	// In the past ACES requires clamping for some reason
 	c = clamp(c, 0.0, 1.0);

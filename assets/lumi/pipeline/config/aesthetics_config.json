@@ -6,7 +6,7 @@
 			options: {
 				tone_profile: {
 					default: "standard",
-					choices: ["standard", "high_contrast"],
+					choices: ["standard", "high_contrast", "reinhard", "reinhard2", "filmic", "vibrant", "uncharted2"],
 					enum: true,
 					prefix: "tone_profile_",
 					nameKey: "config.lumi_lights.value.tone_profile",
