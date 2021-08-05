@@ -8,5 +8,6 @@
 void frx_startFragment(inout frx_FragmentData fragData) {
 	fragData.diffuse = false;
 	fragData.ao = false;
-	fragData.emissivity = 1.0;
+	fragData.emissivity = 10000.0;
+	fragData.spriteColor = vec4(0.647, 0.972, 0.992, 1.0);
 }
