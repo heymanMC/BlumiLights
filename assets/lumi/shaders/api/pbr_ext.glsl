@@ -15,7 +15,7 @@
  */
 
 /* API version */
-#define LUMI_PBR_API 5
+#define LUMI_PBR_API 6
 
 #ifndef VERTEX_SHADER
 
@@ -28,11 +28,21 @@ float pbr_metallic = 0.0;
 /* Initial reflectivity -- Since version 2 */
 float pbr_f0 = -1.0;
 
-/* Microfacet normal -- Since version 3 */
+/* Microfacet normal -- Since version 3
+ *
+ * If this is set, Frex normal map will be ignored. (Future feature)
+ */
 vec3  pbr_normalMicro = vec3(99., 99., 99.);
 
 /* Water flag. Lumi Lights handle water exceptionally -- Since version 4 */
 bool  pbr_isWater = false;
+
+/* Tangent vector -- Since version 6, transient feature
+ *
+ * If this is NOT set, Frex normal map will be ignored. (Future feature)
+ * In the future, will be replaced by Frex fragment API tangent vector.
+ */
+vec3  pbr_tangent = vec3(0., 0., 0.);
 
 #endif
 
